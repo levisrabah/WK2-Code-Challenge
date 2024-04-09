@@ -16,8 +16,9 @@ function textConverter(){
 
     if (text[i] === text[i].toUpperCase()) {
         result += text[i].toLowerCase();
-        } else 
         
+        } else 
+
         //if text[i] is in lower case it's changed to upper cae
         {
         result += text[i].toUpperCase();

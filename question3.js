@@ -1,40 +1,40 @@
-const prompt=require('prompt-sync')({sigint:true});
+const prompt = require('prompt-sync')({sigint: true});
+//promptint the user to input the numbers to test
 
-//asks the user to input the range of the value to be output
+const input = prompt('Input the numbers: ');
 
-let range1=prompt('Input the least number in the range of numbers you want displayed: ');
-let range2=prompt('Input the greatest number in the range of numbers you want displayed: ');
+//Takes an input string and splits using a comma or whitespace
+//console.log(inputArray);
+const inputArray = input.split(/[\s,]+/); 
 
-// assingns filter method to the array and those which pass the conitions are returned
+// converts an array of strings into an array of numbers
+const numbersArray = inputArray.map(Number);
+console.log(numbersArray);
+const primeArray = []; 
+function checkPrime(arr) {
+    let isPrime = true;
 
-const range=[];
+    //Allows us to continue to next iteration since prime numbers are natural numbers greater than one
+    
+    for(const num of arr){
 
-//creates an array of numbers
-
-for (range1; range1 < range2; range1++) {
-
-    //adds a value to the end off the values of the array
-
-    range.push(range1);
-
-}
-//removes the first value of the array which is range1 that's not needed
-
-range.shift()
-
-const primes = range.filter(
-    number=>{
-    if(number<=1){
-        return false;
-    }
-    for (let i = 2; i <=Math.sqrt(number); i++) {
-        if (number % i===0) {
-            return false
+        if(num <= 1){continue} 
+        
+        for (let i = 2; i < num; i++ ) { ///Allows us to check if the current iteration number is ivisible by any number between 2 and num-1
+            if(num  % i == 0) {
+                isPrime = false;
+                break; //Allows us to break out of current loop, since the number is divisible by another number other than 1 anditself
+            }
         }
-        return true
-
+        if(isPrime) {
+            primeArray.push(num)
+        }
+        //reset the value of isPrime before next iteration, otherwise it remains false and no other number is checked
     }
-})
-//shows the output on the console
-
-console.log(primes)
+        isPrime = true; 
+    return primeArray;
+    //console.log(primeArray);
+}
+//checkPrime(originalArray);
+checkPrime(numbersArray)
+console.log(checkPrime(numbersArray));

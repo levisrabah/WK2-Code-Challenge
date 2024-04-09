@@ -1,15 +1,30 @@
-// Declaring the string as input in an the function
+const prompt=require('prompt-sync')({sigint:true});
 
-let str = "The Quick Brown Fox";
+//asks the user to input the test they want to be converted to toggle text
+let text=prompt('Input the text to convert to toggle case: ');
 
-console.log(str.split("").join(""));
+//function that converts the text to toggle
 
-// Swapping of each character 
+function textConverter(){
 
-let result = str.split("").map(item => (item ===item.toUpperCase() ? item.toLowerCase() :
+    //initializes result as a string 
 
-              item.toUpperCase())).join("");
+    let result=""
+  for (let i = 0; i < text.length; i++) {
 
-// Dispaly tHE qUICK bROWN fOX'
+    //if the text[i] is in upper case it's changed to lower case
 
-console.log(result);
+    if (text[i] === text[i].toUpperCase()) {
+        result += text[i].toLowerCase();
+        } else 
+        
+        //if text[i] is in lower case it's changed to upper cae
+        {
+        result += text[i].toUpperCase();
+        }
+ }
+ //returns result
+ return result;
+}
+//outputs the converted text
+ console.log(textConverter())

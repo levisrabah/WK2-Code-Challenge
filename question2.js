@@ -1,24 +1,26 @@
-//the function that generates an array taking two parameters: firstNumber and lastNumber
+const prompt=require('prompt-sync')({sigint:true});
 
+//asks the user to input the range of the value to be output
 
-function generateArray(firstNumber, lastNumber) {
+let range1=prompt('Input the least number in the range of numbers you want displayed: ');
+let range2=prompt('Input the greatest number in the range of numbers you want displayed: ');
 
-    const array = [];
+//creates an empty array
 
-    // The funntion iterates from firstNumber to the lastNumber
+const range=[]
 
-    // Initialization of the loop variable and adding each number to the array
+//takes the two ranges and adds a value starting from the beggining value until the conditions are met 
 
-    for (let r = firstNumber; r <= lastNumber; r++) {
+for (range1; range1 < range2; range1++) {
 
-        // Adding the value of "r" to the end of the array
-        array.push(r);
-    }
-    return array;
+    //adds a value to the end off the values of the array
+    range.push(range1);
+    
 }
+//removes the first value of the array which is range1 that's not needed
 
-// Output 
+range.shift()
 
-console.log(generateArray(4, 7)); 
+//outputs the values that have within the set range
 
-console.log(generateArray(-4, 7)); 
+console.log(range);

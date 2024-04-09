@@ -1,33 +1,40 @@
+const prompt=require('prompt-sync')({sigint:true});
 
-// Function that gets all primeNumbers
+//asks the user to input the range of the value to be output
 
-function getAllPrimeNumber(array, num) {
+let range1=prompt('Input the least number in the range of numbers you want displayed: ');
+let range2=prompt('Input the greatest number in the range of numbers you want displayed: ');
 
-    array = new Array();
+// assingns filter method to the array and those which pass the conitions are returned
 
-    
-    // Create a loop and initialize a variable "k" whose initial value is 2 being that 1 is not a prime number
+const range=[];
 
-        for (let k = 2; k <= num; k++) {
+//creates an array of numbers
 
-            // Setting up a loop that starts with '1' equal to '2' and continues until '1' is less than 'k'
+for (range1; range1 < range2; range1++) {
 
-            for(let l = 2; l < k; l++){
+    //adds a value to the end off the values of the array
 
-                // Checking if 'k' is divisible by any number other than 'l' and 'k' itself.
-                // If it is then 'k' is not a prime number and the loop is terminated
+    range.push(range1);
 
-                if(k % l==0){break; }
-
-                // Appending the value of 'k' to the end of the array
-
-                array.push(k);
-            }
-
-        }
-    return array;
 }
-//Result
-console.log(getAllPrimeNumber([], 5));
+//removes the first value of the array which is range1 that's not needed
 
-console.log(getAllPrimeNumber([], 9));
+range.shift()
+
+const primes = range.filter(
+    number=>{
+    if(number<=1){
+        return false;
+    }
+    for (let i = 2; i <=Math.sqrt(number); i++) {
+        if (number % i===0) {
+            return false
+        }
+        return true
+
+    }
+})
+//shows the output on the console
+
+console.log(primes)
